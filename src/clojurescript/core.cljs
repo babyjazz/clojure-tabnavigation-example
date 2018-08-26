@@ -4,7 +4,8 @@
               [oops.core :refer [ocall]]
               [clojurescript.handlers]
               [clojurescript.subs]
-              [clojurescript.state :as state]))
+              [clojurescript.state :as state]
+              [clojurescript.navigation :refer [Nav]]))
 
 (def ReactNative (js/require "react-native"))
 (def expo (js/require "expo"))
@@ -21,40 +22,10 @@
 (defn alert [title]
     (.alert Alert title))
 
-; def will reset after save
-(def local-state (atom 0))
-
 (defn app-root []
     (let [greeting (subscribe [:get-greeting])]
         (fn []
-            [view {:style {:flex 1
-                           :justify-content "center"
-                           :align-items "center"}}
-             [text ":foo " (@state/app-state :foo)]
-             [text ":bar :zoo " (get-in @state/app-state [:bar :zoo])]
-             [text "home string ==>> " (get-in @state/home [:number])]
-             [text "nested string ==>> " (get-in @state/home [:str-in :sub-str])]
-             [text "tt " @local-state]
-             [touchable-highlight {:style {:padding 20
-                                           :background-color "purple"}
-                                   :on-press #(swap! local-state inc)}
-              [text {:style {:color "white"}} "INCRE"]]
-             [touchable-highlight {:style {:padding 20
-                                           :background-color "purple"}
-                                   :on-press #(swap! state/home assoc-in [:str-in :sub-str] "new nested str")}
-              [text {:style {:color "white"}} "ADD HOME NESTED STR"]]
-             [touchable-highlight {:style {:padding 20
-                                           :background-color "blue"}
-                                   :on-press #(swap! state/home assoc :number "HELOLOLOL")}
-              [text {:style {:color "white"}} "ADD HOME NUMBER"]]
-             [touchable-highlight {:style {:padding 20
-                                           :background-color "gray"}
-                                   :on-press #(swap! state/app-state update-in [:foo] inc)}
-              [text {:style {:color "white"}} "ADD FOO"]]
-             [touchable-highlight {:style {:padding 20
-                                           :background-color "green"}
-                                   :on-press #(swap! state/app-state update-in [:bar :zoo] inc)}
-              [text {:style {:color "white"}} "ADD BAR"]]])))
+            [Nav])))
 
 
 
