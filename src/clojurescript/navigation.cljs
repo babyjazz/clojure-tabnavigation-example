@@ -3,8 +3,8 @@
             [clojurescript.home :refer [Home]]
             [clojurescript.aboutme :refer [Aboutme]]))
 
-(def react-navigation (js/require "react-navigation"))
-(def createStackNavigator (.-createStackNavigator react-navigation))
+(defonce react-navigation (js/require "react-navigation"))
+(defonce createStackNavigator (.-createStackNavigator react-navigation))
 
 
 (defn title-bar []

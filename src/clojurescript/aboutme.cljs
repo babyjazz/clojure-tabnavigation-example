@@ -1,5 +1,6 @@
 (ns clojurescript.aboutme
-  (:require [reagent.core :as r]))
+  (:require [reagent.core :as r]
+            [clojurescript.state :as state]))
 
 (def ReactNative (js/require "react-native"))
 (def expo (js/require "expo"))
@@ -16,4 +17,5 @@
   [view {:style {:flex 1
                  :align-items "center"
                  :justify-content "center"}}
-   [text "ABOUT ME"]])
+    [text "ABOUT ME"]
+    [text (@state/home :number)]])
