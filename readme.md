@@ -1,11 +1,17 @@
 ## clojurescript
 
+### Select branch you want to know
+
+    - Master tell you about how to update nested object data
+    - feature/navigation-tab tell you about how to create tab and stack navigation
+
 ### Usage
 
 #### Install Expo [XDE and mobile client](https://docs.expo.io/versions/v15.0.0/introduction/installation.html)
+
     If you don't want to use XDE (not IDE, it stands for Expo Development Tools), you can use [exp CLI](https://docs.expo.io/versions/v15.0.0/guides/exp-cli.html).
 
-``` shell
+```shell
     yarn global add exp
 ```
 
@@ -13,25 +19,27 @@
 
 #### Install npm modules
 
-``` shell
+```shell
     yarn install
 ```
 
 #### Signup using exp CLI
 
-``` shell
+```shell
     exp signup
 ```
 
 #### Start the figwheel server and cljs repl
 
 ##### leiningen users
-``` shell
+
+```shell
     lein figwheel
 ```
 
 ##### boot users
-``` shell
+
+```shell
     boot dev
 
     ;; then input (cljs-repl) in the connected clojure repl to connect to boot cljs repl
@@ -41,36 +49,41 @@
 
 ##### Also connect to Android device
 
-``` shell
+```shell
     exp start -a --lan
 ```
 
 ##### Also connect to iOS Simulator
 
-``` shell
+```shell
     exp start -i --lan
 ```
 
 ### Add new assets or external modules
-1. `require` module:
 
-``` clj
+1.  `require` module:
+
+```clj
     (def cljs-logo (js/require "./assets/images/cljs.png"))
     (def FontAwesome (js/require "@expo/vector-icons/FontAwesome"))
 ```
-2. Reload simulator or device
+
+2.  Reload simulator or device
 
 ### Make sure you disable live reload from the Developer Menu, also turn off Hot Module Reload.
+
 Since Figwheel already does those.
 
 ### Production build (generates js/externs.js and main.js)
 
 #### leiningen users
-``` shell
+
+```shell
 lein prod-build
 ```
 
 #### boot users
-``` shell
+
+```shell
 boot prod
 ```
