@@ -26,6 +26,8 @@
          [text ":bar :zoo " (get-in @state/app-state [:bar :zoo])]
          [text "home string ==>> " (get-in @state/home [:number])]
          [text "nested string ==>> " (get-in @state/home [:str-in :sub-str])]
+         [ic {:name "ios-home"
+              :color "black"}]
          [text "tt " @local-state]
          [touchable-highlight {:style {:padding 20
                                        :background-color "purple"}

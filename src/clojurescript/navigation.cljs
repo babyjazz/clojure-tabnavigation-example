@@ -1,10 +1,9 @@
 (ns clojurescript.navigation
   (:require [reagent.core :as r]
             [clojurescript.home :refer [Home]]
-            [clojurescript.aboutme :refer [Aboutme]]))
+            [clojurescript.aboutme :refer [Aboutme]]
+            [clojurescript.react-requires :refer [Ic CreateStackNavigator CreateBottomTabNavigator Text]]))
 
-(defonce react-navigation (js/require "react-navigation"))
-(defonce createStackNavigator (.-createStackNavigator react-navigation))
 
 
 (defn title-bar []
@@ -14,12 +13,22 @@
                                   :navigationOptions title-bar}
                  :AboutScreen #js {:screen (r/reactify-component Aboutme)}})
 
-(def Routing (createStackNavigator.
+(def HomeStack (CreateStackNavigator.
                   routes
                   #js {:initialRouteName "HomeScreen"}))
 
+(def home-tabBar #js {:tabBarLabel "Home"})
+                  ; :tabBarIcon (fn []
+                                  ; [Ic {:name "ios-home"
+                                       ; :color "red"
+                                       ; :size 26}])})
 
-(def routing (r/adapt-react-class Routing))
+(def Tabs (CreateBottomTabNavigator #js {:FirstTab (r/reactify-component HomeStack)}
+                                    #js {:navigationOptions home-tabBar
+                                         :tabBarOptions #js {:activeTintColor "red"
+                                                             :inactiveTintColor "gray"}}))
+
+(def routing (r/adapt-react-class Tabs))
 
 (defn Nav []
-        [routing])
+    [routing])
