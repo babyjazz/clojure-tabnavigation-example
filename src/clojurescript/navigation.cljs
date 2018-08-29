@@ -18,10 +18,10 @@
                   #js {:initialRouteName "HomeScreen"}))
 
 (def home-tabBar #js {:tabBarLabel "Home"})
-                  ; :tabBarIcon (fn []
-                                  ; [Ic {:name "ios-home"
-                                       ; :color "red"
-                                       ; :size 26}])})
+                      ; :tabBarIcon (fn []
+                                      ; [Ic {:name "ios-home"
+                                           ; :color "red"
+                                           ; :size 26}])})
 
 (def Tabs (CreateBottomTabNavigator #js {:FirstTab (r/reactify-component HomeStack)}
                                     #js {:navigationOptions home-tabBar
@@ -31,4 +31,4 @@
 (def routing (r/adapt-react-class Tabs))
 
 (defn Nav []
-    [routing])
+    [routing {:persistenceKey "NavigationState"}])
