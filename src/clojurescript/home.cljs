@@ -22,6 +22,7 @@
         [view {:style {:flex 1
                        :align-items "center"
                        :justify-content "center"}}
+         [text {:style {:font-size 26}} "Example of object update"]
          [text ":foo " (@state/app-state :foo)]
          [text ":bar :zoo " (get-in @state/app-state [:bar :zoo])]
          [text "home string ==>> " (get-in @state/home [:number])]
