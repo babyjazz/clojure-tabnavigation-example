@@ -7,3 +7,9 @@
 ; defonce will not reset state after saved
 (defonce home
     (atom {:number "initial number" :str-in {:sub-str "init nested str"}}))
+
+(defonce aboutme
+    (atom {:number 1}))
+
+(comment
+    (swap! app-state update-in [:foo] inc))
