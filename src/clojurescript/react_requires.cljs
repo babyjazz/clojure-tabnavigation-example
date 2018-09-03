@@ -11,9 +11,15 @@
 (defonce View (r/adapt-react-class (.-View ReactNative)))
 (defonce Image (r/adapt-react-class (.-Image ReactNative)))
 (defonce TouchableHighlight (r/adapt-react-class (.-TouchableHighlight ReactNative)))
+(defonce AsyncStorage (.-AsyncStorage ReactNative))
 (defonce Alert (.-Alert ReactNative))
 
 
 (defonce ReactNavigation (js/require "react-navigation"))
 (defonce CreateStackNavigator (.-createStackNavigator ReactNavigation))
 (defonce CreateBottomTabNavigator (.-createBottomTabNavigator ReactNavigation))
+
+
+
+(comment
+    (.clear AsyncStorage ""))
