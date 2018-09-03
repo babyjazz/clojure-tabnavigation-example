@@ -1,3 +1,3 @@
 (ns env.dev)
 (def hostname "babyjazz-pc")
-(def ip "161.246.11.135")
+(def ip "192.168.57.1")

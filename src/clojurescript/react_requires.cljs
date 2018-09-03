@@ -11,6 +11,7 @@
 (defonce View (r/adapt-react-class (.-View ReactNative)))
 (defonce Image (r/adapt-react-class (.-Image ReactNative)))
 (defonce TouchableHighlight (r/adapt-react-class (.-TouchableHighlight ReactNative)))
+(defonce TouchableOpacity (r/adapt-react-class (.-TouchableOpacity ReactNative)))
 (defonce AsyncStorage (.-AsyncStorage ReactNative))
 (defonce Alert (.-Alert ReactNative))
 
